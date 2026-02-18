@@ -141,6 +141,8 @@ public:
         // List samplerates
         samplerates.clear();
         auto srList = dev->get_rx_rates(chanId);
+        srList.emplace_back(3.2e+7);
+        srList.emplace_back(5.6e+7);
         for (const auto& l : srList) {
             double step = (l.step() == 0.0) ? 100e3 : l.step();
             for (double f = l.start(); f <= l.stop(); f += step) {
